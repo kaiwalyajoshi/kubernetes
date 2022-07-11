@@ -351,6 +351,7 @@ func (og *operationGenerator) GenerateAttachVolumeFunc(
 	volumeToAttach VolumeToAttach,
 	actualStateOfWorld ActualStateOfWorldAttacherUpdater) volumetypes.GeneratedOperations {
 
+	//DELTEME@kjoshi GenerateAttachVolumeFunc, does operations of attaching volumes.
 	attachVolumeFunc := func() volumetypes.OperationContext {
 		attachableVolumePlugin, err :=
 			og.volumePluginMgr.FindAttachablePluginBySpec(volumeToAttach.VolumeSpec)

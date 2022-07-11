@@ -87,6 +87,7 @@ func (m *imageManager) logIt(ref *v1.ObjectReference, eventtype, event, prefix, 
 // EnsureImageExists pulls the image for the specified pod and container, and returns
 // (imageRef, error message, error).
 func (m *imageManager) EnsureImageExists(pod *v1.Pod, container *v1.Container, pullSecrets []v1.Secret, podSandboxConfig *runtimeapi.PodSandboxConfig) (string, string, error) {
+	// DELETEME@kjoshi, this EnsureImageExists which lists all the success/failure reasons of pulling Images in k8s
 	logPrefix := fmt.Sprintf("%s/%s/%s", pod.Namespace, pod.Name, container.Image)
 	ref, err := kubecontainer.GenerateContainerRef(pod, container)
 	if err != nil {

@@ -24,6 +24,7 @@ import (
 	podutil "k8s.io/kubernetes/pkg/api/v1/pod"
 )
 
+// DELETEME@kjoshi, various Statuses a Pod can take
 const (
 	// UnknownContainerStatuses says that all container statuses are unknown.
 	UnknownContainerStatuses = "UnknownContainerStatuses"
@@ -97,6 +98,7 @@ func GenerateContainersReadyCondition(spec *v1.PodSpec, containerStatuses []v1.C
 // The status of "Ready" condition is "True", if all containers in a pod are ready
 // AND all matching conditions specified in the ReadinessGates have status equal to "True".
 func GeneratePodReadyCondition(spec *v1.PodSpec, conditions []v1.PodCondition, containerStatuses []v1.ContainerStatus, podPhase v1.PodPhase) v1.PodCondition {
+	// DELETEME@kjoshi, conditions need for Pod to become Ready
 	containersReady := GenerateContainersReadyCondition(spec, containerStatuses, podPhase)
 	// If the status of ContainersReady is not True, return the same status, reason and message as ContainersReady.
 	if containersReady.Status != v1.ConditionTrue {
@@ -140,6 +142,7 @@ func GeneratePodReadyCondition(spec *v1.PodSpec, conditions []v1.PodCondition, c
 // GeneratePodInitializedCondition returns initialized condition if all init containers in a pod are ready, else it
 // returns an uninitialized condition.
 func GeneratePodInitializedCondition(spec *v1.PodSpec, containerStatuses []v1.ContainerStatus, podPhase v1.PodPhase) v1.PodCondition {
+	// DELETEME@kjoshi, the controlflow for Initialized Pods.
 	// Find if all containers are ready or not.
 	if containerStatuses == nil && len(spec.InitContainers) > 0 {
 		return v1.PodCondition{

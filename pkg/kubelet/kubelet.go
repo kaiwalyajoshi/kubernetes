@@ -1498,6 +1498,7 @@ func (kl *Kubelet) Run(updates <-chan kubetypes.PodUpdate) {
 // the most accurate information possible about an error situation to aid debugging.
 // Callers should not write an event if this operation returns an error.
 func (kl *Kubelet) syncPod(ctx context.Context, updateType kubetypes.SyncPodType, pod, mirrorPod *v1.Pod, podStatus *kubecontainer.PodStatus) (isTerminal bool, err error) {
+	// DELETEME@kjoshi, this is the main function that creates a Pod via the kubelet.
 	klog.V(4).InfoS("syncPod enter", "pod", klog.KObj(pod), "podUID", pod.UID)
 	defer func() {
 		klog.V(4).InfoS("syncPod exit", "pod", klog.KObj(pod), "podUID", pod.UID, "isTerminal", isTerminal)
@@ -1711,9 +1712,11 @@ func (kl *Kubelet) syncPod(ctx context.Context, updateType kubetypes.SyncPodType
 		}
 	}
 
+	// DELETEME@kjoshi, Pull Secrets before creating the Pod.
 	// Fetch the pull secrets for the pod
 	pullSecrets := kl.getPullSecretsForPod(pod)
 
+	// DELETEME@kjoshi, this is where we PullImages, start InitContainers, Containers.
 	// Call the container runtime's SyncPod callback
 	result := kl.containerRuntime.SyncPod(pod, podStatus, pullSecrets, kl.backOff)
 	kl.reasonCache.Update(pod.UID, result)

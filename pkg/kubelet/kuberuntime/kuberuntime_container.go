@@ -176,6 +176,8 @@ func calcRestartCountByLogDir(path string) (int, error) {
 func (m *kubeGenericRuntimeManager) startContainer(podSandboxID string, podSandboxConfig *runtimeapi.PodSandboxConfig, spec *startSpec, pod *v1.Pod, podStatus *kubecontainer.PodStatus, pullSecrets []v1.Secret, podIP string, podIPs []string) (string, error) {
 	container := spec.container
 
+	// DELETEME@kjoshi this is startContainer, the full sequence of events when running containers.
+
 	// Step 1: pull the image.
 	imageRef, msg, err := m.imagePuller.EnsureImageExists(pod, container, pullSecrets, podSandboxConfig)
 	if err != nil {
@@ -571,6 +573,7 @@ func toKubeContainerStatus(status *runtimeapi.ContainerStatus, runtimeName strin
 		// started the container. Set the StartedAt time.
 		cStatus.StartedAt = time.Unix(0, status.StartedAt)
 	}
+	// DELETEME@kjoshi, this is where container statues are written on CONTAINER_EXIT from the runtime.
 	if status.State == runtimeapi.ContainerState_CONTAINER_EXITED {
 		cStatus.Reason = status.Reason
 		cStatus.Message = status.Message

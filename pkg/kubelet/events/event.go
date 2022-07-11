@@ -16,6 +16,8 @@ limitations under the License.
 
 package events
 
+// DELETEME@kjoshi these are the list of all Container, Pod and Image events.
+
 // Container event reason list
 const (
 	CreatedContainer        = "Created"

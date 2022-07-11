@@ -62,6 +62,7 @@ const (
 
 var clearNominatedNode = &framework.NominatingInfo{NominatingMode: framework.ModeOverride, NominatedNodeName: ""}
 
+// DELETEME@kjoshi, code to schedule one Pod.
 // scheduleOne does the entire scheduling workflow for a single pod. It is serialized on the scheduling algorithm's host fitting.
 func (sched *Scheduler) scheduleOne(ctx context.Context) {
 	podInfo := sched.NextPod()
@@ -795,6 +796,7 @@ func (sched *Scheduler) finishBinding(fwk framework.Framework, assumed *v1.Pod, 
 		return
 	}
 
+	// DELETEME@kjoshi, Event notifying successful scheduling of Pod to Node
 	fwk.EventRecorder().Eventf(assumed, nil, v1.EventTypeNormal, "Scheduled", "Binding", "Successfully assigned %v/%v to %v", assumed.Namespace, assumed.Name, targetNode)
 }
 

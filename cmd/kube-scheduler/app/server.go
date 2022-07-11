@@ -138,6 +138,7 @@ func runCommand(cmd *cobra.Command, opts *options.Options, registryOptions ...Op
 		return err
 	}
 
+	// DELETEME@kjoshi, start running the Scheduler here.
 	return Run(ctx, cc, sched)
 }
 
@@ -232,6 +233,7 @@ func Run(ctx context.Context, cc *schedulerserverconfig.CompletedConfig, sched *
 
 	// Leader election is disabled, so runCommand inline until done.
 	close(waitingForLeader)
+	// DELETEME@kjoshi, start scheduler.
 	sched.Run(ctx)
 	return fmt.Errorf("finished without leader elect")
 }

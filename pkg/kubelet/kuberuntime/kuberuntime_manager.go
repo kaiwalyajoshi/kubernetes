@@ -888,6 +888,7 @@ func (m *kubeGenericRuntimeManager) SyncPod(pod *v1.Pod, podStatus *kubecontaine
 		}
 		klog.V(4).InfoS("Creating container in pod", "containerType", typeName, "container", spec.container, "pod", klog.KObj(pod))
 		// NOTE (aramase) podIPs are populated for single stack and dual stack clusters. Send only podIPs.
+		//DELETEME@kjoshi, StartContainers happens here.
 		if msg, err := m.startContainer(podSandboxID, podSandboxConfig, spec, pod, podStatus, pullSecrets, podIP, podIPs); err != nil {
 			// startContainer() returns well-defined error codes that have reasonable cardinality for metrics and are
 			// useful to cluster administrators to distinguish "server errors" from "user errors".

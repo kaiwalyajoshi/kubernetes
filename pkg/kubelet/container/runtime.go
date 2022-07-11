@@ -252,6 +252,7 @@ func (id DockerID) ContainerID() ContainerID {
 // State represents the state of a container
 type State string
 
+// DELETEME@kjoshi, these are the various States a container can be in.
 const (
 	// ContainerStateCreated indicates a container that has been created (e.g. with docker create) but not started.
 	ContainerStateCreated State = "created"
@@ -302,6 +303,7 @@ type PodStatus struct {
 	SandboxStatuses []*runtimeapi.PodSandboxStatus
 }
 
+// DELETEME@kjoshi, this is the Status struct of a Container.
 // Status represents the status of a container.
 type Status struct {
 	// ID of the container.

@@ -2609,6 +2609,8 @@ type ContainerStatus struct {
 // +enum
 type PodPhase string
 
+// DELETEME@kjoshi, these are all the various Pod Statuses
+
 // These are the valid statuses of pods.
 const (
 	// PodPending means the pod has been accepted by the system, but one or more of the containers
