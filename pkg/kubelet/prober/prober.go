@@ -94,6 +94,7 @@ func (pb *prober) recordContainerEvent(pod *v1.Pod, container *v1.Container, eve
 
 // probe probes the container.
 func (pb *prober) probe(probeType probeType, pod *v1.Pod, status v1.PodStatus, container v1.Container, containerID kubecontainer.ContainerID) (results.Result, error) {
+	// DELETEME@kjoshi, this is where the Readiness, Liveness, Startup Probe are run.
 	var probeSpec *v1.Probe
 	switch probeType {
 	case readiness:

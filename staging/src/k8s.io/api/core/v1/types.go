@@ -2559,6 +2559,7 @@ type ContainerStateTerminated struct {
 	ContainerID string `json:"containerID,omitempty" protobuf:"bytes,7,opt,name=containerID"`
 }
 
+// DELETEME@kjoshi these are the three container States!
 // ContainerState holds a possible state of container.
 // Only one of its members may be specified.
 // If none of them is specified, the default one is ContainerStateWaiting.
@@ -2574,6 +2575,7 @@ type ContainerState struct {
 	Terminated *ContainerStateTerminated `json:"terminated,omitempty" protobuf:"bytes,3,opt,name=terminated"`
 }
 
+// DELETEME@kjoshi these are the ContainerStatus struct containing States.
 // ContainerStatus contains details for the current status of this container.
 type ContainerStatus struct {
 	// This must be a DNS_LABEL. Each container in a pod must have a unique name.
@@ -3785,6 +3787,7 @@ type EphemeralContainer struct {
 	TargetContainerName string `json:"targetContainerName,omitempty" protobuf:"bytes,2,opt,name=targetContainerName"`
 }
 
+// DELETEME@kjoshi, this is the actual PodStatus Struct which is generated!
 // PodStatus represents information about the status of a pod. Status may trail the actual
 // state of a system, especially if the node that hosts the pod cannot contact the control
 // plane.

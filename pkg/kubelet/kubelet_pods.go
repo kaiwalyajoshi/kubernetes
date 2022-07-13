@@ -1429,6 +1429,7 @@ func getPhase(spec *v1.PodSpec, info []v1.ContainerStatus) v1.PodPhase {
 	}
 }
 
+// DELETEME@kjoshi, this converts internal statuses to k8s API Pod Statuses.
 // generateAPIPodStatus creates the final API pod status for a pod, given the
 // internal pod status. This method should only be called from within sync*Pod methods.
 func (kl *Kubelet) generateAPIPodStatus(pod *v1.Pod, podStatus *kubecontainer.PodStatus) v1.PodStatus {
@@ -1567,6 +1568,7 @@ func (kl *Kubelet) sortPodIPs(podIPs []string) []string {
 	return ips
 }
 
+// DELETEME@kjoshi, main method that does Pod Status conversions.
 // convertStatusToAPIStatus initialize an api PodStatus for the given pod from
 // the given internal pod status and the previous state of the pod from the API.
 // It is purely transformative and does not alter the kubelet state at all.
@@ -1835,6 +1837,7 @@ func (kl *Kubelet) convertToAPIContainerStatuses(pod *v1.Pod, podStatus *kubecon
 			//   * Terminated: The container is terminated.
 			continue
 		}
+		// DELETEME@kjoshi, Container LastTerminationState set here.
 		if status.State.Terminated != nil {
 			status.LastTerminationState = status.State
 		}
