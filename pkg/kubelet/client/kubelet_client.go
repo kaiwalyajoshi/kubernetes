@@ -52,11 +52,13 @@ type KubeletClientConfig struct {
 	Lookup egressselector.Lookup
 }
 
+// DELETEME@kjoshi: CIS 1.2.6
 type KubeletTLSConfig struct {
 	// Server requires TLS client certificate authentication
 	CertFile string
 	// Server requires TLS client certificate authentication
 	KeyFile string
+	// DELETEME@kjoshi: This file is set via --kubelet-certificate-authority
 	// Trusted root certificates for server
 	CAFile string
 }
